@@ -12,25 +12,25 @@ export const Hero = () => {
 
   return (
     <section className="relative overflow-hidden">
-      {/* -------- GALERIA FULL-BLEED (SEM BORDAS) -------- */}
-      {/* Desktop/Tablet */}
+      {/* -------- GALERIA FULL-BLEED -------- */}
+      {/* Desktop/Tablet: 3 cols com altura reduzida */}
       <div className="hidden sm:block w-screen relative left-1/2 -translate-x-1/2">
-        <div className="grid grid-cols-3 gap-0 h-32 md:h-44 lg:h-56">
+        <div className="grid grid-cols-3 gap-0 overflow-hidden h-[140px] md:h-[180px] lg:h-[220px]">
           <img src={foto1} alt="Inspiração 1" className="w-full h-full object-cover block" />
           <img src={foto2} alt="Inspiração 2" className="w-full h-full object-cover block" />
           <img src={foto3} alt="Inspiração 3" className="w-full h-full object-cover block" />
         </div>
       </div>
 
-      {/* Mobile */}
+      {/* Mobile: 1 imagem, full-bleed, altura menor */}
       <div className="sm:hidden w-screen relative left-1/2 -translate-x-1/2">
-        <div className="h-36">
+        <div className="overflow-hidden h-[136px]">
           <img src={foto2} alt="Inspiração destaque" className="w-full h-full object-cover block" />
         </div>
       </div>
-      {/* ----------------------------------------------- */}
+      {/* ------------------------------------ */}
 
-      {/* Elementos decorativos */}
+      {/* Decorativos */}
       <div className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute top-20 left-10 w-32 h-32 bg-accent/10 rounded-full blur-3xl animate-pulse" />
         <div
@@ -39,8 +39,8 @@ export const Hero = () => {
         />
       </div>
 
-      {/* Conteúdo principal */}
-      <div className="relative z-10 max-w-4xl mx-auto text-center px-4 pt-8 pb-20 space-y-8">
+      {/* Conteúdo */}
+      <div className="relative z-10 max-w-4xl mx-auto text-center px-4 pt-6 pb-20 space-y-8">
         <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/60 backdrop-blur-sm rounded-full border border-accent/20 shadow-soft">
           <Sparkles className="w-4 h-4 text-accent" />
           <span className="text-sm font-poppins font-medium text-foreground/80">
@@ -57,18 +57,13 @@ export const Hero = () => {
         </h1>
 
         <p className="font-poppins text-lg md:text-xl text-foreground/70 max-w-3xl mx-auto leading-relaxed">
-          e descubra como transformar cada detalhe do seu casamento em uma
-          experiência inesquecível.
+          e descubra como transformar cada detalhe do seu casamento em uma experiência inesquecível.
         </p>
 
         <p className="font-poppins text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
           O espaço exclusivo da{" "}
-          <span className="font-semibold text-accent">
-            Paper Memories Conviteria
-          </span>
-          , referência há mais de 12 anos em papelaria de luxo, criado para
-          noivas que desejam viver o grande dia com elegância, propósito e
-          identidade.
+          <span className="font-semibold text-accent">Paper Memories Conviteria</span>, referência há mais de 12 anos em
+          papelaria de luxo, criado para noivas que desejam viver o grande dia com elegância, propósito e identidade.
         </p>
 
         <Button
