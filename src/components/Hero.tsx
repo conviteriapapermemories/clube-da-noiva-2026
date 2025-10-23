@@ -1,39 +1,36 @@
 import { Button } from "@/components/ui/button";
 import { Sparkles } from "lucide-react";
 
-// imagens já em src/images
 import foto1 from "@/images/foto1.jpg";
 import foto2 from "@/images/foto2.jpg";
 import foto3 from "@/images/foto3.jpg";
 
 export const Hero = () => {
   const scrollToForm = () => {
-    document
-      .getElementById("signup-form")
-      ?.scrollIntoView({ behavior: "smooth" });
+    document.getElementById("signup-form")?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
     <section className="relative overflow-hidden">
-      {/* ---------------- GALERIA FULL-BLEED (SEM BORDAS) ---------------- */}
-      {/* Desktop/Tablet: 3 colunas */}
+      {/* -------- GALERIA FULL-BLEED (SEM BORDAS) -------- */}
+      {/* Desktop/Tablet */}
       <div className="hidden sm:block w-screen relative left-1/2 -translate-x-1/2">
-        <div className="grid grid-cols-3 gap-0 h-44 md:h-64 lg:h-80">
+        <div className="grid grid-cols-3 gap-0 h-32 md:h-44 lg:h-56">
           <img src={foto1} alt="Inspiração 1" className="w-full h-full object-cover block" />
           <img src={foto2} alt="Inspiração 2" className="w-full h-full object-cover block" />
           <img src={foto3} alt="Inspiração 3" className="w-full h-full object-cover block" />
         </div>
       </div>
 
-      {/* Mobile: somente a foto do meio, também full-bleed */}
+      {/* Mobile */}
       <div className="sm:hidden w-screen relative left-1/2 -translate-x-1/2">
-        <div className="h-48">
+        <div className="h-36">
           <img src={foto2} alt="Inspiração destaque" className="w-full h-full object-cover block" />
         </div>
       </div>
-      {/* ----------------------------------------------------------------- */}
+      {/* ----------------------------------------------- */}
 
-      {/* elementos decorativos - ficam atrás do conteúdo */}
+      {/* Elementos decorativos */}
       <div className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute top-20 left-10 w-32 h-32 bg-accent/10 rounded-full blur-3xl animate-pulse" />
         <div
@@ -42,8 +39,8 @@ export const Hero = () => {
         />
       </div>
 
-      {/* ---------------------- CONTEÚDO DO HERO ------------------------- */}
-      <div className="relative z-10 max-w-4xl mx-auto text-center px-4 pt-10 pb-20 space-y-8">
+      {/* Conteúdo principal */}
+      <div className="relative z-10 max-w-4xl mx-auto text-center px-4 pt-8 pb-20 space-y-8">
         <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/60 backdrop-blur-sm rounded-full border border-accent/20 shadow-soft">
           <Sparkles className="w-4 h-4 text-accent" />
           <span className="text-sm font-poppins font-medium text-foreground/80">
@@ -51,7 +48,6 @@ export const Hero = () => {
           </span>
         </div>
 
-        {/* quebra controlada só no desktop/tablet */}
         <h1 className="font-playfair font-bold text-5xl md:text-6xl lg:text-7xl text-foreground leading-tight">
           Entre para o
           <br className="hidden sm:block" />{" "}
@@ -84,7 +80,6 @@ export const Hero = () => {
           Quero entrar para o Clube e receber meu checklist
         </Button>
       </div>
-      {/* ----------------------------------------------------------------- */}
     </section>
   );
 };
