@@ -106,3 +106,50 @@ All colors MUST be HSL.
     @apply bg-background text-foreground;
   }
 }
+/* ====== FIX HERO MOBILE (primeira seção) ====== */
+@media (max-width: 480px) {
+  /* Seletor do hero: 1ª seção dentro do <main> */
+  main section:first-of-type {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  /* Título do hero (h1): reduz e evita corte/estouro */
+  main section:first-of-type h1 {
+    font-size: clamp(28px, 8vw, 40px) !important;
+    line-height: 1.15 !important;
+    word-break: break-word;
+    hyphens: auto;
+    letter-spacing: 0.1px;
+  }
+
+  /* Subtítulo/descrição logo abaixo do título (h2/p fortes) */
+  main section:first-of-type h2,
+  main section:first-of-type p {
+    font-size: clamp(14px, 4.2vw, 16px);
+    line-height: 1.55;
+  }
+
+  /* Badge “Grupo VIP Exclusivo” – centraliza e evita overflow */
+  main section:first-of-type [class*="badge"],
+  main section:first-of-type .badge {
+    max-width: 100%;
+    white-space: nowrap;
+  }
+
+  /* CTA principal do hero: ocupa largura confortável no mobile */
+  main section:first-of-type a[role="button"],
+  main section:first-of-type button {
+    min-height: 48px;
+    padding: 12px 18px;
+    width: 100%;
+  }
+
+  /* Evita que imagens/decor do fundo empurrem layout */
+  main section:first-of-type img,
+  main section:first-of-type svg {
+    max-width: 100%;
+    height: auto;
+  }
+}
+/* ====== FIM FIX HERO MOBILE ====== */
