@@ -67,7 +67,7 @@ export const SignupForm = () => {
       formData.append("source", window.location.href);
 
       const response = await fetch(
-        "https://script.google.com/macros/s/AKfycbw7XxaIo9w-S3LVHqSxsKdpjDO4ldxO92tMCb9Q3Dvwdy4GNHsGVBGbBNmUAlnBE73hIg/exec",
+        "https://script.google.com/macros/s/AKfycbw-_kmqhoQscWdEvmxjEBjizuaUqKsOD6B1BrAnMy4Wtj1R0OsLFpdUql5DeMJcmg7Rzw/exec",
         {
           method: "POST",
           body: formData,
