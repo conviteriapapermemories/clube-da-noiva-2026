@@ -15,7 +15,7 @@ export const Hero = () => {
       {/* -------- GALERIA FULL-BLEED -------- */}
       {/* Desktop/Tablet: 3 colunas preenchendo 100% (sem sobras) */}
       <div className="hidden sm:block w-screen relative left-1/2 -translate-x-1/2">
-        <div className="grid grid-cols-3 gap-0 overflow-hidden h-[130px] md:h-[160px] lg:h-[190px]">
+        <div className="grid grid-cols-3 gap-0 overflow-hidden h-[140px] md:h-[180px] lg:h-[220px]">
           <img src={foto1} alt="Inspiração 1" className="w-full h-full object-cover block" />
           <img src={foto2} alt="Inspiração 2" className="w-full h-full object-cover block" />
           <img src={foto3} alt="Inspiração 3" className="w-full h-full object-cover block" />
@@ -24,7 +24,7 @@ export const Hero = () => {
 
       {/* Mobile: centralizada, sem cortes */}
       <div className="sm:hidden w-screen relative left-1/2 -translate-x-1/2">
-        <div className="h-[140px] flex items-center justify-center overflow-hidden">
+        <div className="h-[160px] flex items-center justify-center overflow-hidden">
           <img src={foto2} alt="Inspiração destaque" className="max-h-full object-contain block" />
         </div>
       </div>
