@@ -17,7 +17,10 @@ const formSchema = z.object({
     .trim()
     .min(10, { message: "WhatsApp inválido" })
     .max(20, { message: "WhatsApp inválido" })
-    .regex(/^[\d\s\(\)\-\+]+$/, { message: "WhatsApp deve conter apenas números" })
+    .regex(/^[\d\s\(\)\-\+]+$/, { message: "WhatsApp deve conter apenas números" }),
+  dataCasamento: z.string()
+    .trim()
+    .min(1, { message: "Data do casamento é obrigatória" })
 });
 
 type FormValues = z.infer<typeof formSchema>;
@@ -31,6 +34,7 @@ export const SignupForm = () => {
     defaultValues: {
       name: "",
       whatsapp: "",
+      dataCasamento: "",
     },
   });
 
@@ -38,23 +42,41 @@ export const SignupForm = () => {
     setIsSubmitting(true);
     
     try {
-      // Simulate form submission
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      // Converter data de YYYY-MM-DD para DD/MM/AAAA
+      const [year, month, day] = values.dataCasamento.split('-');
+      const dataCasamentoFormatted = `${day}/${month}/${year}`;
       
-      const message = `Olá! Sou ${values.name} e quero fazer parte do Clube da Noiva 2026! 💍✨`;
-      const whatsappNumber = values.whatsapp.replace(/\D/g, '');
-      const whatsappUrl = `https://wa.me/5511999999999?text=${encodeURIComponent(message)}`;
+      // Enviar dados para Google Sheets via Apps Script
+      const formData = new FormData();
+      formData.append('nome', values.name);
+      formData.append('whatsapp', values.whatsapp);
+      formData.append('dataCasamento', dataCasamentoFormatted);
+
+      const response = await fetch(
+        'https://script.google.com/macros/s/AKfycbw7XxaIo9w-S3LVHqSxsKdpjDO4ldxO92tMCb9Q3Dvwdy4GNHsGVBGbBNmUAlnBE73hIg/exec',
+        {
+          method: 'POST',
+          body: formData,
+          redirect: 'follow'
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error('Erro ao enviar dados');
+      }
       
       toast({
         title: "Bem-vinda ao Clube da Noiva! 💕",
-        description: "Você será redirecionada para o WhatsApp para receber seu checklist exclusivo.",
+        description: "Você será redirecionada para o grupo do WhatsApp.",
       });
       
+      form.reset();
+      
+      // Redirecionar para o grupo do WhatsApp
       setTimeout(() => {
-        window.open(whatsappUrl, '_blank');
+        window.location.href = 'https://chat.whatsapp.com/LOHVhUUKmT3FTyp4ShyRdz';
       }, 1500);
       
-      form.reset();
     } catch (error) {
       toast({
         variant: "destructive",
@@ -117,6 +139,26 @@ export const SignupForm = () => {
                     <FormControl>
                       <Input 
                         placeholder="(11) 99999-9999" 
+                        className="font-poppins bg-white/80 border-accent/30 focus:border-accent h-12"
+                        {...field} 
+                      />
+                    </FormControl>
+                    <FormMessage className="font-poppins text-sm" />
+                  </FormItem>
+                )}
+              />
+              
+              <FormField
+                control={form.control}
+                name="dataCasamento"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="font-poppins font-medium text-foreground">
+                      Data do Casamento
+                    </FormLabel>
+                    <FormControl>
+                      <Input 
+                        type="date"
                         className="font-poppins bg-white/80 border-accent/30 focus:border-accent h-12"
                         {...field} 
                       />
