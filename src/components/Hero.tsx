@@ -15,7 +15,7 @@ export const Hero = () => {
       {/* -------- GALERIA FULL-BLEED -------- */}
       {/* Desktop/Tablet: 3 colunas preenchendo 100% (sem sobras) */}
       <div className="hidden sm:block w-screen relative left-1/2 -translate-x-1/2">
-        <div className="grid grid-cols-3 gap-0 overflow-hidden h-[140px] md:h-[180px] lg:h-[220px]">
+        <div className="grid grid-cols-3 gap-0 overflow-hidden h-[160px] md:h-[200px] lg:h-[240px]">
           <img src={foto1} alt="Inspiração 1" className="w-full h-full object-cover block" />
           <img src={foto2} alt="Inspiração 2" className="w-full h-full object-cover block" />
           <img src={foto3} alt="Inspiração 3" className="w-full h-full object-cover block" />
@@ -44,7 +44,7 @@ export const Hero = () => {
         <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/60 backdrop-blur-sm rounded-full border border-accent/20 shadow-soft">
           <Sparkles className="w-4 h-4 text-accent" />
           <span className="text-sm font-poppins font-medium text-foreground/80">
-            Grupo VIP Exclusivo
+            Clube da Noiva
           </span>
         </div>
 
