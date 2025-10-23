@@ -20,34 +20,23 @@ export const Hero = () => {
         style={{ animationDelay: "1s" }}
       />
 
-      {/* === NOVO BLOCO DE FOTOS === */}
-      {/* Desktop/Tablet: 3 fotos */}
-      <div className="hidden sm:flex relative z-10 gap-6 md:gap-8 mb-8 md:mb-12">
-        <img
-          src={foto1}
-          alt="Inspiração 1"
-          className="w-36 h-48 md:w-48 md:h-64 object-cover rounded-2xl shadow-lg"
-        />
-        <img
-          src={foto2}
-          alt="Inspiração destaque"
-          className="w-40 h-56 md:w-52 md:h-72 object-cover rounded-2xl shadow-lg"
-        />
-        <img
-          src={foto3}
-          alt="Inspiração 3"
-          className="w-36 h-48 md:w-48 md:h-64 object-cover rounded-2xl shadow-lg"
-        />
+      {/* === CABEÇALHO EM GALERIA (FULL-BLEED) === */}
+      {/* Desktop/Tablet: 3 imagens lado a lado, sem borda/sem gap */}
+      <div className="hidden sm:block w-screen relative left-1/2 -translate-x-1/2">
+        <div className="grid grid-cols-3 gap-0 h-44 md:h-64 lg:h-80">
+          <img src={foto1} alt="Inspiração 1" className="w-full h-full object-cover" />
+          <img src={foto2} alt="Inspiração 2" className="w-full h-full object-cover" />
+          <img src={foto3} alt="Inspiração 3" className="w-full h-full object-cover" />
+          </div>
       </div>
 
-      {/* Mobile: somente a foto do meio */}
-      <div className="sm:hidden relative z-10 mb-6">
-        <img
-          src={foto2}
-          alt="Inspiração destaque"
-          className="w-10/12 mx-auto object-cover rounded-2xl shadow-lg"
-        />
+      {/* Mobile: somente a foto do meio, full-bleed também */}
+      <div className="sm:hidden w-screen relative left-1/2 -translate-x-1/2">
+        <div className="h-48">
+          <img src={foto2} alt="Inspiração destaque" className="w-full h-full object-cover" />
+        </div>
       </div>
+
 
       {/* Conteúdo textual */}
       <div className="relative z-10 max-w-4xl mx-auto text-center space-y-8 animate-fade-in">
