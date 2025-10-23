@@ -12,23 +12,44 @@ export const Hero = () => {
 
   return (
     <section className="relative overflow-hidden">
-      {/* -------- GALERIA FULL-BLEED -------- */}
-      {/* Desktop/Tablet: 3 cols com altura reduzida */}
+      {/* -------- GALERIA FULL-BLEED CENTRALIZADA -------- */}
+      {/* Desktop/Tablet */}
       <div className="hidden sm:block w-screen relative left-1/2 -translate-x-1/2">
-        <div className="grid grid-cols-3 gap-0 overflow-hidden h-[140px] md:h-[180px] lg:h-[220px]">
-          <img src={foto1} alt="Inspiração 1" className="w-full h-full object-cover block" />
-          <img src={foto2} alt="Inspiração 2" className="w-full h-full object-cover block" />
-          <img src={foto3} alt="Inspiração 3" className="w-full h-full object-cover block" />
+        <div className="grid grid-cols-3 gap-0 overflow-hidden h-[140px] md:h-[180px] lg:h-[220px] bg-[#fdf8f3]">
+          <div className="flex items-center justify-center overflow-hidden">
+            <img
+              src={foto1}
+              alt="Inspiração 1"
+              className="max-h-full object-contain"
+            />
+          </div>
+          <div className="flex items-center justify-center overflow-hidden">
+            <img
+              src={foto2}
+              alt="Inspiração 2"
+              className="max-h-full object-contain"
+            />
+          </div>
+          <div className="flex items-center justify-center overflow-hidden">
+            <img
+              src={foto3}
+              alt="Inspiração 3"
+              className="max-h-full object-contain"
+            />
+          </div>
         </div>
       </div>
 
-      {/* Mobile: 1 imagem, full-bleed, altura menor */}
-      <div className="sm:hidden w-screen relative left-1/2 -translate-x-1/2">
-        <div className="overflow-hidden h-[160px]">
-          <img src={foto2} alt="Inspiração destaque" className="w-full h-full object-cover block" />
+      {/* Mobile */}
+      <div className="sm:hidden w-screen relative left-1/2 -translate-x-1/2 bg-[#fdf8f3]">
+        <div className="h-[136px] flex items-center justify-center overflow-hidden">
+          <img
+            src={foto2}
+            alt="Inspiração destaque"
+            className="max-h-full object-contain"
+          />
         </div>
       </div>
-      {/* ------------------------------------ */}
 
       {/* Decorativos */}
       <div className="pointer-events-none absolute inset-0 -z-10">
