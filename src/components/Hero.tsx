@@ -52,7 +52,7 @@ export const Hero = () => {
       </div>
       {/* ----------------------------------------------- */}
 
-      {/* Elementos decorativos (suaves) */}
+      {/* Elementos decorativos */}
       <div className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute top-20 left-10 w-32 h-32 bg-accent/10 rounded-full blur-3xl animate-pulse" />
         <div
@@ -63,13 +63,15 @@ export const Hero = () => {
 
       {/* ---------------------- CONTEÚDO ---------------------- */}
       <div className="relative z-10 max-w-4xl mx-auto text-center px-4 pt-10 pb-20 space-y-8">
+        {/* Badge */}
         <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/60 backdrop-blur-sm rounded-full border border-accent/20 shadow-soft">
           <Sparkles className="w-4 h-4 text-accent" />
           <span className="text-sm font-poppins font-medium text-foreground/80">
-            Grupo VIP Exclusivo
+            Clube da Noiva
           </span>
         </div>
 
+        {/* Título */}
         <h1 className="font-playfair font-bold text-5xl md:text-6xl lg:text-7xl text-foreground leading-tight">
           Entre para o
           <br className="hidden sm:block" />{" "}
@@ -78,11 +80,13 @@ export const Hero = () => {
           </span>
         </h1>
 
+        {/* Descrição curta */}
         <p className="font-poppins text-lg md:text-xl text-foreground/70 max-w-3xl mx-auto leading-relaxed">
           e descubra como transformar cada detalhe do seu casamento em uma
           experiência inesquecível.
         </p>
 
+        {/* Descrição longa */}
         <p className="font-poppins text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
           O espaço exclusivo da{" "}
           <span className="font-semibold text-accent">
@@ -93,14 +97,29 @@ export const Hero = () => {
           identidade.
         </p>
 
-        <Button
-          size="lg"
-          onClick={scrollToForm}
-          className="group mt-8 px-8 py-6 text-base font-poppins font-medium bg-accent hover:bg-accent/90 text-white shadow-elegant hover:shadow-xl transition-all duration-500 hover:scale-105"
-        >
-          <Sparkles className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform duration-300" />
-          Quero entrar para o Clube e receber meu checklist
-        </Button>
+        {/* CTA */}
+        <div className="mt-8 flex justify-center">
+          <Button
+            size="lg"
+            onClick={scrollToForm}
+            className="
+              w-full sm:w-auto
+              max-w-[320px] sm:max-w-none
+              px-5 sm:px-8
+              py-5 sm:py-6
+              text-sm sm:text-base
+              leading-snug
+              font-poppins font-medium
+              bg-accent hover:bg-accent/90 text-white
+              shadow-elegant hover:shadow-xl
+              transition-all duration-500 hover:scale-105
+              whitespace-normal break-words
+            "
+          >
+            <Sparkles className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform duration-300" />
+            Quero entrar para o Clube e receber meu checklist
+          </Button>
+        </div>
       </div>
     </section>
   );
