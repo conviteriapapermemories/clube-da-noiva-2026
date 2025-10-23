@@ -11,30 +11,30 @@ export const Hero = () => {
   };
 
   return (
-    <section className="relative overflow-hidden">
+    <section className="relative overflow-hidden bg-[#fdf8f3]">
       {/* -------- GALERIA FULL-BLEED CENTRALIZADA -------- */}
       {/* Desktop/Tablet */}
       <div className="hidden sm:block w-screen relative left-1/2 -translate-x-1/2">
-        <div className="grid grid-cols-3 gap-0 overflow-hidden h-[140px] md:h-[180px] lg:h-[220px] bg-[#fdf8f3]">
+        <div className="grid grid-cols-3 gap-0 overflow-hidden h-[130px] md:h-[160px] lg:h-[190px] bg-[#fdf8f3]">
           <div className="flex items-center justify-center overflow-hidden">
             <img
               src={foto1}
               alt="Inspiração 1"
-              className="max-h-full object-contain"
+              className="max-h-full object-contain block"
             />
           </div>
           <div className="flex items-center justify-center overflow-hidden">
             <img
               src={foto2}
               alt="Inspiração 2"
-              className="max-h-full object-contain"
+              className="max-h-full object-contain block"
             />
           </div>
           <div className="flex items-center justify-center overflow-hidden">
             <img
               src={foto3}
               alt="Inspiração 3"
-              className="max-h-full object-contain"
+              className="max-h-full object-contain block"
             />
           </div>
         </div>
@@ -42,16 +42,17 @@ export const Hero = () => {
 
       {/* Mobile */}
       <div className="sm:hidden w-screen relative left-1/2 -translate-x-1/2 bg-[#fdf8f3]">
-        <div className="h-[136px] flex items-center justify-center overflow-hidden">
+        <div className="h-[140px] flex items-center justify-center overflow-hidden">
           <img
             src={foto2}
             alt="Inspiração destaque"
-            className="max-h-full object-contain"
+            className="max-h-full object-contain block"
           />
         </div>
       </div>
+      {/* ----------------------------------------------- */}
 
-      {/* Decorativos */}
+      {/* Elementos decorativos (suaves) */}
       <div className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute top-20 left-10 w-32 h-32 bg-accent/10 rounded-full blur-3xl animate-pulse" />
         <div
@@ -60,8 +61,8 @@ export const Hero = () => {
         />
       </div>
 
-      {/* Conteúdo */}
-      <div className="relative z-10 max-w-4xl mx-auto text-center px-4 pt-6 pb-20 space-y-8">
+      {/* ---------------------- CONTEÚDO ---------------------- */}
+      <div className="relative z-10 max-w-4xl mx-auto text-center px-4 pt-10 pb-20 space-y-8">
         <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/60 backdrop-blur-sm rounded-full border border-accent/20 shadow-soft">
           <Sparkles className="w-4 h-4 text-accent" />
           <span className="text-sm font-poppins font-medium text-foreground/80">
@@ -78,13 +79,18 @@ export const Hero = () => {
         </h1>
 
         <p className="font-poppins text-lg md:text-xl text-foreground/70 max-w-3xl mx-auto leading-relaxed">
-          e descubra como transformar cada detalhe do seu casamento em uma experiência inesquecível.
+          e descubra como transformar cada detalhe do seu casamento em uma
+          experiência inesquecível.
         </p>
 
         <p className="font-poppins text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
           O espaço exclusivo da{" "}
-          <span className="font-semibold text-accent">Paper Memories Conviteria</span>, referência há mais de 12 anos em
-          papelaria de luxo, criado para noivas que desejam viver o grande dia com elegância, propósito e identidade.
+          <span className="font-semibold text-accent">
+            Paper Memories Conviteria
+          </span>
+          , referência há mais de 12 anos em papelaria de luxo, criado para
+          noivas que desejam viver o grande dia com elegância, propósito e
+          identidade.
         </p>
 
         <Button
