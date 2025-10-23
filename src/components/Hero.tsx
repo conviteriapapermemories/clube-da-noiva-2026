@@ -24,7 +24,7 @@ export const Hero = () => {
 
       {/* Mobile: 1 imagem, full-bleed, altura menor */}
       <div className="sm:hidden w-screen relative left-1/2 -translate-x-1/2">
-        <div className="overflow-hidden h-[136px]">
+        <div className="overflow-hidden h-[160px]">
           <img src={foto2} alt="Inspiração destaque" className="w-full h-full object-cover block" />
         </div>
       </div>
