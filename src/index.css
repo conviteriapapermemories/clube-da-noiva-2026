@@ -153,3 +153,20 @@ main section:first-of-type h1 {
     min-height: 48px;
   }
 }
+/* ===== AJUSTE FINAL DO BOTÃO (texto cortando no mobile) ===== */
+main section:first-of-type button,
+main section:first-of-type a[role="button"] {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  padding: 14px 22px !important;
+  border-radius: 12px !important;
+  font-size: clamp(14px, 4vw, 16px) !important;
+  line-height: 1.3 !important;
+  font-weight: 600 !important;
+  white-space: normal !important;
+  text-align: center !important;
+  text-wrap: balance;
+  overflow: visible !important;
+}
