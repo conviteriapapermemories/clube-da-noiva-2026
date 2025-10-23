@@ -3,8 +3,8 @@ import { CheckCircle2, Sparkles, Gift } from "lucide-react";
 const benefits = [
   {
     icon: CheckCircle2,
-    title: "Checklist do Casamento Ideal 2026",
-    description: "O guia essencial com todas as etapas — do planejamento à festa."
+    title: "Acesso ao Clube da Noiva",
+    description: "Entre para o grupo exclusivo de noivas da Paper Memories."
   },
   {
     icon: Sparkles,
