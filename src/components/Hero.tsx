@@ -15,7 +15,7 @@ export const Hero = () => {
       {/* -------- GALERIA FULL-BLEED -------- */}
       {/* Desktop/Tablet: 3 cols com altura reduzida */}
       <div className="hidden sm:block w-screen relative left-1/2 -translate-x-1/2">
-        <div className="grid grid-cols-3 gap-0 overflow-hidden h-[120px] md:h-[160px] lg:h-[200px]">
+        <div className="grid grid-cols-3 gap-0 overflow-hidden h-[130px] md:h-[170px] lg:h-[210px]">
           <img src={foto1} alt="Inspiração 1" className="w-full h-full object-cover block" />
           <img src={foto2} alt="Inspiração 2" className="w-full h-full object-cover block" />
           <img src={foto3} alt="Inspiração 3" className="w-full h-full object-cover block" />
