@@ -77,6 +77,14 @@ export const SignupForm = () => {
 
       if (!response.ok) throw new Error("Erro ao enviar dados");
 
+      // Rastrear conversão no Meta Pixel
+      if (window.fbq) {
+        window.fbq('track', 'Lead', {
+          content_name: 'Clube da Noiva 2026',
+          content_category: 'Signup Form'
+        });
+      }
+
       toast({
         title: "Bem-vinda ao Clube da Noiva! 💕",
         description: "Você será redirecionada para o grupo do WhatsApp.",
