@@ -201,6 +201,23 @@ export const SignupForm = () => {
                 {isSubmitting ? "Enviando..." : "Quero entrar para o Clube"}
                 <Send className="w-5 h-5 ml-2" />
               </Button>
+              useEffect(() => {
+              const button = document.querySelector('button[type="submit"]');
+              if (button) {
+                button.addEventListener('click', () => {
+                  window.parent?.postMessage(
+                    {
+                      source: 'lovable',
+                      type: 'fbq',
+                      event: 'Lead',
+                      meta: { label: 'cta_clube_noiva' },
+                    },
+                    '*'
+                  );
+                  console.log('[Lovable→Bagy] Evento Lead enviado');
+                });
+              }
+            }, []);
             </form>
           </Form>
         </div>
