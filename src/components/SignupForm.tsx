@@ -33,6 +33,21 @@ const formSchema = z.object({
 
 type FormValues = z.infer<typeof formSchema>;
 
+// ---- helper para enviar evento ao domínio pai (Bagy) ----
+function notifyParent(event: string, meta?: Record<string, any>) {
+  try {
+    if (typeof window !== "undefined" && window.parent) {
+      window.parent.postMessage(
+        { source: "lovable", type: "fbq", event, meta: meta || {} },
+        "*" // se quiser restringir, troque por "https://SEU-DOMINIO-BAGY"
+      );
+      // console.log(`[Lovable→Bagy] Enviado: ${event}`, meta || {});
+    }
+  } catch (e) {
+    // console.warn("postMessage falhou:", e);
+  }
+}
+
 export const SignupForm = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -77,6 +92,9 @@ export const SignupForm = () => {
 
       if (!response.ok) throw new Error("Erro ao enviar dados");
 
+      // ✅ Sucesso: dispara o evento no PIXEL do domínio Bagy via postMessage
+      notifyParent("Lead", { label: "signup_success" });
+
       toast({
         title: "Bem-vinda ao Clube da Noiva! 💕",
         description: "Você será redirecionada para o grupo do WhatsApp.",
@@ -88,6 +106,9 @@ export const SignupForm = () => {
         window.location.href = "https://chat.whatsapp.com/LOHVhUUKmT3FTyp4ShyRdz";
       }, 1500);
     } catch (error) {
+      // (opcional) marque erro como evento custom
+      notifyParent("FormError", { label: "signup_error" });
+
       toast({
         variant: "destructive",
         title: "Erro ao enviar",
@@ -195,6 +216,8 @@ export const SignupForm = () => {
               <Button
                 type="submit"
                 disabled={isSubmitting}
+                // ✅ marca o clique do CTA (mesmo que a submissão falhe)
+                onClick={() => notifyParent("ClickCTA", { label: "cta_submit" })}
                 className="w-full group mt-6 py-6 text-base font-poppins font-medium bg-accent hover:bg-accent/90 text-white shadow-elegant hover:shadow-xl transition-all duration-500 hover:scale-105"
               >
                 <Sparkles className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform duration-300" />
