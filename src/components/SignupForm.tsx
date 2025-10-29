@@ -8,6 +8,13 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { useToast } from "@/hooks/use-toast";
 import { Sparkles, Send } from "lucide-react";
 
+// (TS) Declaração segura do fbq no objeto window
+declare global {
+  interface Window {
+    fbq?: (...args: any[]) => void;
+  }
+}
+
 const formSchema = z.object({
   name: z
     .string()
@@ -47,10 +54,21 @@ export const SignupForm = () => {
     },
   });
 
+  // Helper para disparar eventos do Pixel com segurança
+  const safeTrack = (event: string, params?: Record<string, any>) => {
+    try {
+      if (typeof window !== "undefined" && typeof window.fbq === "function") {
+        window.fbq("track", event, params);
+      }
+    } catch {
+      // silencioso: se o pixel não estiver disponível, apenas ignora
+    }
+  };
+
   const onSubmit = async (values: FormValues) => {
     setIsSubmitting(true);
     try {
-      // Converter YYYY-MM-DD -> DD/MM/AAAA
+      // Converter YYYY-MM-DD -> DD/MM/AAAA (quando vier nesse formato)
       let dataCasamentoFormatted = values.dataCasamento;
       if (/^\d{4}-\d{2}-\d{2}$/.test(values.dataCasamento)) {
         const [year, month, day] = values.dataCasamento.split("-");
@@ -63,7 +81,6 @@ export const SignupForm = () => {
       formData.append("email", values.email);
       formData.append("whatsapp", values.whatsapp);
       formData.append("dataCasamento", dataCasamentoFormatted);
-      // (opcional) origem da página
       formData.append("source", window.location.href);
 
       const response = await fetch(
@@ -77,6 +94,12 @@ export const SignupForm = () => {
 
       if (!response.ok) throw new Error("Erro ao enviar dados");
 
+      // 🔥 Pixel: marca Lead somente após sucesso real
+      safeTrack("Lead", {
+        content_name: "Clube da Noiva 2026",
+        source: "Landing GitHub (iframe)",
+      });
+
       toast({
         title: "Bem-vinda ao Clube da Noiva! 💕",
         description: "Você será redirecionada para o grupo do WhatsApp.",
@@ -84,6 +107,7 @@ export const SignupForm = () => {
 
       form.reset();
 
+      // Redirecionar para o grupo do WhatsApp
       setTimeout(() => {
         window.location.href = "https://chat.whatsapp.com/LOHVhUUKmT3FTyp4ShyRdz";
       }, 1500);
@@ -119,6 +143,7 @@ export const SignupForm = () => {
 
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+              {/* Nome */}
               <FormField
                 control={form.control}
                 name="name"
@@ -137,6 +162,7 @@ export const SignupForm = () => {
                 )}
               />
 
+              {/* E-mail */}
               <FormField
                 control={form.control}
                 name="email"
@@ -156,6 +182,7 @@ export const SignupForm = () => {
                 )}
               />
 
+              {/* WhatsApp */}
               <FormField
                 control={form.control}
                 name="whatsapp"
@@ -174,6 +201,7 @@ export const SignupForm = () => {
                 )}
               />
 
+              {/* Data do Casamento */}
               <FormField
                 control={form.control}
                 name="dataCasamento"
@@ -192,6 +220,7 @@ export const SignupForm = () => {
                 )}
               />
 
+              {/* CTA */}
               <Button
                 type="submit"
                 disabled={isSubmitting}
